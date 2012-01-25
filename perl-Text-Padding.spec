@@ -1,26 +1,23 @@
-%define upstream_name    Text-Padding
-%define upstream_version 1.110170
+%define	module	Text-Padding
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Name:		perl-%{module}
+Version:	1.110170
+Release:	1
+Summary:	Simple way of formatting a text
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{module}
+Source0:	http://www.cpan.org/modules/by-module/Text/%{module}-%{version}.tar.gz
 
-Summary:    Simple way of formatting a text
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Text/%{upstream_name}-%{upstream_version}.tar.gz
-
-BuildRequires: perl(File::Find)
-BuildRequires: perl(File::Temp)
-BuildRequires: perl(Module::Build)
-BuildRequires: perl(Moose)
-BuildRequires: perl(MooseX::Has::Sugar)
-BuildRequires: perl(Test::More)
-BuildRequires: perl(Text::Truncate)
-BuildRequires: perl(Module::Build)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl(File::Find)
+BuildRequires:	perl(File::Temp)
+BuildRequires:	perl(Module::Build)
+BuildRequires:	perl(Moose)
+BuildRequires:	perl(MooseX::Has::Sugar)
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl(Text::Truncate)
+BuildRequires:	perl(Module::Build)
+BuildArch:	noarch
 
 %description
 This module provides a simple way to align a text on the left, right or
@@ -33,7 +30,7 @@ time.
 Hence this module, which aims to provide only those 3 methods.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{module}-%{version}
 
 %build
 %{__perl} Build.PL installdirs=vendor
@@ -44,18 +41,9 @@ Hence this module, which aims to provide only those 3 methods.
 ./Build test
 
 %install
-rm -rf %buildroot
 ./Build install destdir=%{buildroot}
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc README Changes LICENSE META.yml META.json
 %{_mandir}/man3/*
-%perl_vendorlib/*
-
-
-
-
+%{perl_vendorlib}/*
