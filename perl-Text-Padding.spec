@@ -6,7 +6,7 @@ Release:	1
 Summary:	Simple way of formatting a text
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{module}
+Url:		https://search.cpan.org/dist/%{module}
 Source0:	http://www.cpan.org/modules/by-module/Text/%{module}-%{version}.tar.gz
 
 BuildRequires:	perl(File::Find)
